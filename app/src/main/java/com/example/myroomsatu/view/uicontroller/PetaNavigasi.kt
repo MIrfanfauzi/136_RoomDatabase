@@ -12,7 +12,11 @@ import com.example.myroomsatu.view.HomeScreen
 import com.example.myroomsatu.view.route.DestinasiHome
 import com.example.myroomsatu.view.route.DestinasiEntry
 
-
+@Composable
+fun SiswaApp(navController: NavHostController = rememberNavController(),
+             modifier: Modifier) {
+    HostNavigasi(navController = navController)
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
