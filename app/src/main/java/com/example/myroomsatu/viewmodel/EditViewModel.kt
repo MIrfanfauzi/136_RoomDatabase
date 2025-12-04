@@ -25,4 +25,15 @@ class EditViewModel(
     var uiStateSiswa by mutableStateOf(EntryViewModel.UIStateSiswa())
         private set
 
+    private val idSiswa: Int = checkNotNull(savedStateHandle[DestinasiDetailSiswa.itemIdArg])
+
+    init {
+        viewModelScope.launch {
+            uiStateSiswa = repositoriSiswa.getSiswaStream(idSiswa)
+                .filterNotNull()
+                .first()
+                .toUiStateSiswa(true)
+        }
+    }
+
 }
