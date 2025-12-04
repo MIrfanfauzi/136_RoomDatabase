@@ -10,17 +10,19 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.myroomsatu.view.DetailSiswaScreen
+import com.example.myroomsatu.view.EditSiswaScreen
 import com.example.myroomsatu.view.EntrySiswaScreen
 import com.example.myroomsatu.view.HomeScreen
 import com.example.myroomsatu.view.route.DestinasiDetailSiswa
 import com.example.myroomsatu.view.route.DestinasiDetailSiswa.itemIdArg
+import com.example.myroomsatu.view.route.DestinasiEditSiswa
 import com.example.myroomsatu.view.route.DestinasiHome
 import com.example.myroomsatu.view.route.DestinasiEntry
 
 @Composable
 fun SiswaApp(navController: NavHostController = rememberNavController(),
-             modifier: Modifier) {
-    HostNavigasi(navController = navController)
+             modifier: Modifier = Modifier ) {
+    HostNavigasi(navController = navController,modifier = modifier)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -42,14 +44,17 @@ fun HostNavigasi(
         composable(DestinasiEntry.route) {
             EntrySiswaScreen(navigateBack = { navController.popBackStack() })
         }
-        composable(route = DestinasiDetailSiswa.routeWithArgs,
-            arguments = listOf(navArgument(name = itemIdArg) {
-                type = NavType.IntType
-            })
+        composable(
+            route = DestinasiDetailSiswa.routeWithArgs,
+            // --- PERBAIKAN DI SINI ---
+            // Gunakan referensi lengkap ke properti const val.
+            arguments = listOf(navArgument(DestinasiDetailSiswa.itemIdArg) { type = NavType.IntType })
         ) {
             DetailSiswaScreen(
-                navigateBack = { navController.popBackStack() }
+                navigateToEditItem = { id: Int -> navController.navigate("${DestinasiEditSiswa.route}/$id") },
+                navigateBack = { navController.navigateUp() }
             )
         }
     }
+
 }
