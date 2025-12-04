@@ -10,6 +10,7 @@ import com.example.myroomsatu.repositori.AplikasiSiswa
 import com.example.myroomsatu.viewmodel.EntryViewModel
 import com.example.myroomsatu.viewmodel.HomeViewModel
 import com.example.myroomsatu.viewmodel.DetailViewModel
+import com.example.myroomsatu.viewmodel.EditViewModel
 
 object PenyediaViewModel {
     val Factory = viewModelFactory {
@@ -24,6 +25,10 @@ object PenyediaViewModel {
         }
         initializer {
             DetailViewModel( savedStateHandle= this.createSavedStateHandle(),
+                repositoriSiswa = aplikasiSiswa().container.repositoriSiswa)
+        }
+        initializer {
+            EditViewModel(this.createSavedStateHandle(),
                 repositoriSiswa = aplikasiSiswa().container.repositoriSiswa)
         }
     }
