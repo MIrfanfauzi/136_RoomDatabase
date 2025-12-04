@@ -25,3 +25,10 @@ fun EntryViewModel.DetailSiswa.toSiswa(): Siswa = Siswa(
     alamat = alamat,
     telpon = telpon
 )
+
+/**
+ * UI state for ItemDetailsScreen
+ */
+data class DetailSiswaUiState(
+    val detailSiswa: EntryViewModel.DetailSiswa = EntryViewModel.DetailSiswa()
+)
