@@ -18,3 +18,10 @@ fun Siswa.toDetailSiswa(): EntryViewModel.DetailSiswa = EntryViewModel.DetailSis
     alamat = alamat,
     telpon = telpon
 )
+
+fun EntryViewModel.DetailSiswa.toSiswa(): Siswa = Siswa(
+    id = id,
+    nama = nama,
+    alamat = alamat,
+    telpon = telpon
+)
