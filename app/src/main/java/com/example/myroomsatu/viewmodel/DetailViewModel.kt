@@ -26,6 +26,15 @@ fun EntryViewModel.DetailSiswa.toSiswa(): Siswa = Siswa(
     telpon = telpon
 )
 
+class DetailViewModel (
+    savedStateHandle: SavedStateHandle,
+    private val repositoriSiswa: RepositoriSiswa) : ViewModel(){
+
+    private val idSiswa: Int = checkNotNull(savedStateHandle[DestinasiDetailSiswa.itemIdArg])
+
+
+}
+
 /**
  * UI state for ItemDetailsScreen
  */
