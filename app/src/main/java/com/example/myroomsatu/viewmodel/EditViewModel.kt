@@ -22,4 +22,7 @@ class EditViewModel(
     private val repositoriSiswa: RepositoriSiswa
 ) : ViewModel() {
 
+    var uiStateSiswa by mutableStateOf(EntryViewModel.UIStateSiswa())
+        private set
+
 }
